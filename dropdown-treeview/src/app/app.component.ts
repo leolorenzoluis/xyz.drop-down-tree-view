@@ -9,31 +9,31 @@ export class AppComponent {
   title = 'app works!';
 
   items = {
-    "name": "root",
-    "children": [
+    name: "root",
+    children: [
       {
-        "name": "europe",
+        name: "europe",
 
-        "children": [
+        children: [
           {
-            "name": "spain",
+            name: "spain",
 
-            "children": [
+            children: [
               {
-                "name": "realmadrid",
+                name: "realmadrid",
 
-                "children": [
+                children: [
                   {
-                    "name": "ronaldo"
+                    name: "ronaldo"
                   }
                 ]
               },
               {
-                "name": "barcelona",
+                name: "barcelona",
 
-                "children": [
+                children: [
                   {
-                    "name": "messi"
+                    name: "messi"
                   }
                 ]
               }
@@ -42,19 +42,19 @@ export class AppComponent {
         ]
       },
       {
-        "name": "england",
+        name: "england",
 
-        "children": [
+        children: [
           {
-            "name": "unknown english",
+            name: "unknown english",
 
           },
           {
-            "name": "liverpool",
+            name: "liverpool",
 
-            "children": [
+            children: [
               {
-                "name": "gerald",
+                name: "gerald",
 
               }
             ]

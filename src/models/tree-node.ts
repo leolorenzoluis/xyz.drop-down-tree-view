@@ -1,6 +1,6 @@
 export class TreeNode {
     selectable: boolean = true;
-    isExpanded: boolean;
+    isExpanded: boolean = true;
     isHighlighted: boolean;
     id: any;
     model: any;
@@ -11,12 +11,14 @@ export class TreeNode {
     constructor(item: any, public parent: TreeNode) {
         this.model = item;
         this.name = item.name;
-        this.isExpanded = item.isExpanded;
         this.children = item.children ? item.children.map(x => new TreeNode(x, this)) : [];
         this.level = this.parent ? this.parent.level + 1 : 0;
         this.id = item.id || Math.floor(Math.random() * 10000000000000);
         if (item.selectable !== undefined) {
             this.selectable = item.selectable;
+        }
+        if (item.isExpanded !== undefined) {
+            this.isExpanded = item.isExpanded;
         }
     }
 

@@ -1,5 +1,11 @@
+@font-face {
+	  font-family: 'Roboto-Regular';
+	  src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+	}
+
 $primary: #106cc8 !default;
 $warn: #f44336 !default;
+$xyz-font-family: Roboto, 'Helvetica Neue', sans-serif !default;
 
 dropdown-treeview {
   position: relative;
@@ -8,6 +14,7 @@ dropdown-treeview {
   outline: none;
   user-select: none;
   backface-visibility: hidden;
+  font-family: $xyz-font-family;
 }
 
 dropdown-treeview.dropdown-treeview-disabled {
@@ -18,6 +25,7 @@ dropdown-treeview.dropdown-treeview-disabled {
 tree ul {
     padding:0px ;
     margin:5px;
+    font-family: $xyz-font-family;
     color: initial;
 }
 
@@ -131,7 +139,7 @@ dropdown-treeview .dropdown-treeview-placeholder.has-value {
   background: white;
 }
 
-.dropdown-treeview-menu .md2-option {
+.dropdown-treeview-menu .xyz-option {
   position: relative;
   display: block;
   color: lighten(black, 13);
@@ -142,12 +150,7 @@ dropdown-treeview .dropdown-treeview-placeholder.has-value {
   transition: background 150ms linear;
 }
 
-// .dropdown-treeview-menu .md2-option:hover,
-// .dropdown-treeview-menu .md2-option.focus {
-//   background: darken(white, 7);
-// }
-
-.dropdown-treeview-menu .md2-option .md2-text {
+.dropdown-treeview-menu .xyz-option .xyz-text {
   width: auto;
   white-space: nowrap;
   overflow: hidden;
