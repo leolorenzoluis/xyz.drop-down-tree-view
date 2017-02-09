@@ -1,4 +1,4 @@
-import * as Fuse from 'fuse.js';
+import * as Fuse from '../shared/fuse.js';
 
 export class TreeOptions {
     showRoot: boolean = false;
@@ -22,7 +22,7 @@ export class TreeOptions {
 
     defaultSearch = (node, searchText) => {
         if (node && node.selectable) {
-            let fuse = new Fuse.Fuse([node], this.searchOptions);
+            let fuse = new Fuse([node], this.searchOptions);
             let result = fuse.search(searchText)[0];
             return result !== undefined;
         }

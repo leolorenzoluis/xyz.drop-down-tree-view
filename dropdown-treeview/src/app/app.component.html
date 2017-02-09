@@ -1,3 +1,11 @@
 <h1>
   {{title}}
 </h1>
+
+<dropdown-treeview [itemSource]="items"
+                  item-text="name"
+                  min-length="0"
+                  [(ngModel)]="item"
+                  placeholder="Placeholder Text"
+                  ngDefaultControl>
+</dropdown-treeview>
