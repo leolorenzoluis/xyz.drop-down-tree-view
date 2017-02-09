@@ -3,9 +3,9 @@
         [disabled]="disabled" class="dropdown-treeview-input" (focus)="handleFocus()" (blur)="handleBlur()" (keydown)="handleKeydown($event)"
         (change)="$event.stopPropagation()" />
     <span class="dropdown-treeview-placeholder" [class.has-value]="_inputValue"> {{ placeholder }} </span>
-    <svg *ngIf="_inputValue" (click)="_onClear()" width="24" height="24" viewBox="0 0 24 24">
+    <svg *ngIf="_inputValue" (click)="onClear()" width="24" height="24" viewBox="0 0 24 24">
         <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
     </svg>
 </div>
-<tree *ngIf="isMenuVisible" [queryValue]="_inputValue" class="dropdown-treeview-menu" (mouseenter)="handleMouseEnter()"
-    (mouseleave)="handleMouseLeave()" [itemsource]="_filteredItems"></tree>
+<tree *ngIf="isMenuVisible" [query-value]="_inputValue" class="dropdown-treeview-menu" (mouseenter)="handleMouseEnter()"
+    (mouseleave)="handleMouseLeave()" [item-source]="_filteredItems"></tree>

@@ -8,8 +8,10 @@ You can customize CSS yourself to break down dependencies.
 
 ## Features
 
-* Unlimited tree levels
+* Beautiful component
 * Smart text filtering
+* Unlimited tree levels
+* Supports accessibility features
 
 ## Demo
 
