@@ -1,4 +1,4 @@
-# xyz Angular Dropdown TreeView
+# XYZ Angular Dropdown TreeView
 
 An awesome and beautiful Angular 2 dropdown treeview component.
 
