@@ -54,38 +54,15 @@ export class DropDownWithTreeViewAutoCompleteChange {
     encapsulation: ViewEncapsulation.None
 })
 export class DropDownWithTreeView implements AfterContentInit, ControlValueAccessor, OnDestroy {
-    coerceBooleanProperty(value: any): boolean {
-        return value != null && `${value}` !== 'false';
-    }
-
-    ngOnDestroy() {
-        this.selectedItemSubscription.unsubscribe();
-        this.currentHighlightSubscription.unsubscribe();
-    }
-
-    selectedItemSubscription: Subscription;
-    currentHighlightSubscription: Subscription;
 
     constructor(private _element: ElementRef, private service: TreeViewService) {
-        this.selectedItemSubscription = service.observableSelectedItem.subscribe(item => this.changeSelectedItem(item));
-        this.currentHighlightSubscription = service.observableCurrentFocus.subscribe(item => this.changeFocusedNode(item));
+        this._selectedItemSubscription = service.observableSelectedItem.subscribe(this.changeSelectedItem);
+        this._currentHighlightSubscription = service.observableCurrentFocus.subscribe(this.changeFocusedNode);
     }
 
-    changeFocusedNode(item) {
-        if (this._filteredItems.getFocusedNode()) {
-            this._filteredItems.getFocusedNode().unfocus();
-        }
-        if (item) {
-            this._filteredItems.setFocusedNode(item.focus());
-        }
-    }
-
-    ngAfterContentInit() { this._isInitialized = true; }
-
-    @Output() change: EventEmitter<any> = new EventEmitter<any>();
-    @Output() textChange = new EventEmitter();
-
-    private _model: any = '';
+    private _selectedItemSubscription: Subscription;
+    private _currentHighlightSubscription: Subscription;
+    private _model: any;
     private _readonly: boolean = false;
     private _required: boolean = false;
     private _disabled: boolean = false;
@@ -93,15 +70,17 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
     private _isDirty: boolean = false;
     private _filteredItems: Tree;
     private _itemSource: Tree;
-    private selectedItem: any;
-    private noBlur: boolean = false;
-    private _focusedOption: number = -1;
+    private _selectedItem: any;
+    private _noBlur: boolean = false;
     private _inputValue: string = '';
     private _showMenu: boolean = false;
 
-    private _onChange = (val: any) => { };
-    private _onTouched = () => { };
+    private _onChange = (val: any): void => { };
+    private _onTouched = (): void => { };
+    public ngAfterContentInit = (): void => { this._isInitialized = true; }
 
+    @Output() change: EventEmitter<any> = new EventEmitter<any>();
+    @Output() textChange = new EventEmitter();
     @Input() id: string = 'dropdown-treeview' + (++nextId);
     @Input() tabindex: number = 0;
     @Input() placeholder: string = '';
@@ -121,10 +100,47 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
     get disabled(): boolean { return this._disabled; }
     set disabled(value) { this._disabled = this.coerceBooleanProperty(value); }
 
-    @Input()
+    @Input('item-source')
     set itemSource(value: any) {
-        this._itemSource = new Tree(value, new TreeOptions(false));
+        this._itemSource = new Tree(value, new TreeOptions());
         this.updateFilteredItems(this._itemSource);
+    }
+
+    @Input()
+    get value(): any { return this._model; }
+    set value(value: any) {
+        if (value !== this._model) {
+            this._model = value;
+            this._inputValue = '';
+            if (value && this._selectedItem) {
+                this._selectedItem.model = value;
+            }
+            if (!this._inputValue) { this._inputValue = ''; }
+            if (this._isInitialized) {
+                this.emitChangeEvent();
+            }
+        }
+    }
+
+    private coerceBooleanProperty = (value: any): boolean => {
+        return value != null && `${value}` !== 'false';
+    }
+
+    public ngOnDestroy(): void {
+        this._selectedItemSubscription.unsubscribe();
+        this._currentHighlightSubscription.unsubscribe();
+    }
+
+    /**
+     * Change the focus node
+     */
+    private changeFocusedNode = (item: TreeNode): void => {
+        if (this._filteredItems.getFocusedNode()) {
+            this._filteredItems.getFocusedNode().unfocus();
+        }
+        if (item) {
+            this._filteredItems.setFocusedNode(item.focus());
+        }
     }
 
     /**
@@ -140,22 +156,6 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
         }
         if (this._isDirty) {
             this._showMenu = true;
-        }
-    }
-
-    @Input()
-    get value(): any { return this._model; }
-    set value(value: any) {
-        if (value !== this._model) {
-            this._model = value;
-            this._inputValue = '';
-            if (value && this.selectedItem) {
-                this.selectedItem.model = value;
-            }
-            if (!this._inputValue) { this._inputValue = ''; }
-            if (this._isInitialized) {
-                this._emitChangeEvent();
-            }
         }
     }
 
@@ -184,14 +184,14 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
         return false;
     }
 
-    get isMenuVisible(): boolean {
-        return (this._showMenu || this.noBlur) && !this.readonly ? true : false;
+    public get isMenuVisible(): boolean {
+        return (this._showMenu || this._noBlur) && !this.readonly ? true : false;
     }
 
     /**
      * update scroll of suggestion menu
      */
-    private updateScroll() {
+    private updateScroll = (): void => {
         let menuContainer = this._element.nativeElement.querySelector('.dropdown-treeview-menu');
         if (!menuContainer) { return; }
 
@@ -215,19 +215,19 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
      * input event listner
      * @param event
      */
-    _handleKeydown(event: KeyboardEvent) {
+    private handleKeydown = (event: KeyboardEvent): void => {
         if (this.disabled) { return; }
         this.textChange.emit(this._inputValue);
         switch (event.keyCode) {
             case TAB:
-                this._handleMouseLeave();
+                this.handleMouseLeave();
                 this.changeSelectedItem(this._filteredItems.selectFirstMatch(this._inputValue));
                 break;
             case ESCAPE:
                 event.stopPropagation();
                 event.preventDefault();
                 if (this._inputValue) {
-                    this._onClear();
+                    this.onClear();
                 }
                 break;
             case ENTER:
@@ -245,7 +245,6 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
                     }
                 }
                 break;
-
             case DOWN_ARROW:
                 event.preventDefault();
                 event.stopPropagation();
@@ -263,7 +262,7 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
         }
     }
 
-    changeFocus(keyArrow: number) {
+    private changeFocus = (keyArrow: number): void => {
         if (this.isMenuVisible) {
             if (keyArrow === UP_ARROW) {
                 this._filteredItems.focusPreviousNode();
@@ -283,44 +282,37 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
      * @param event
      * @param index of selected item
      */
-    changeSelectedItem(newSelectedItem: TreeNode) {
+    private changeSelectedItem = (newSelectedItem: TreeNode): void => {
         if (newSelectedItem) {
-            this.selectedItem = newSelectedItem.model;
+            this._selectedItem = newSelectedItem.model;
             this._inputValue = newSelectedItem.name;
         }
         this.updateValue();
-        this._handleMouseLeave();
+        this.handleMouseLeave();
         this._showMenu = false;
     }
 
     /**
      * clear selected suggestion
      */
-    _onClear() {
+    private onClear = (): void => {
         if (this.disabled) { return; }
         this._inputValue = '';
-        this.selectedItem = null;
+        this._selectedItem = null;
         this.updateFilteredItems(this._itemSource);
         if (this._filteredItems.getFocusedNode()) {
             this._filteredItems.getFocusedNode().unfocus();
         }
-        this._model = this.selectedItem ? this.selectedItem.model : this.selectedItem;
+        this._model = this._selectedItem ? this._selectedItem.model : this._selectedItem;
         this.updateValue();
     }
 
     /**
      * update value
      */
-    private updateValue() {
-        this._model = this.selectedItem ? this.selectedItem.model : this.selectedItem;
-        this._emitChangeEvent();
-        this.onFocus();
-    }
-
-    /**
-     * component focus listener
-     */
-    private onFocus() {
+    private updateValue = (): void => {
+        this._model = this._selectedItem ? this._selectedItem.model : this._selectedItem;
+        this.emitChangeEvent();
         if (this.disabled) { return; }
         this._element.nativeElement.querySelector('input').focus();
     }
@@ -328,7 +320,7 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
     /**
      * input focus listener
      */
-    _handleFocus() {
+    private handleFocus = (): void => {
         this._showMenu = true;
         // Let the menu load first so the container is in the DOM.
         setTimeout(() => {
@@ -339,7 +331,7 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
     /**
      * input blur listener
      */
-    _handleBlur() {
+    private handleBlur = (): void => {
         this._showMenu = false;
         this._onTouched();
     }
@@ -347,15 +339,15 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
     /**
      * suggestion menu mouse enter listener
      */
-    _handleMouseEnter() { this.noBlur = true; }
+    private handleMouseEnter = (): void => { this._noBlur = true; }
 
     /**
      * suggestion menu mouse leave listener
      */
-    _handleMouseLeave() { this.noBlur = false; }
+    private handleMouseLeave = (): void => { this._noBlur = false; }
 
 
-    _emitChangeEvent(): void {
+    private emitChangeEvent = (): void => {
         let event = new DropDownWithTreeViewAutoCompleteChange();
         event.source = this;
         event.value = this._model;
@@ -363,14 +355,14 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
         this.change.emit(event);
     }
 
-    registerOnChange(fn: (value: any) => void): void { this._onChange = fn; }
+    public registerOnChange(fn: (value: any) => void): void { this._onChange = fn; }
 
-    registerOnTouched(fn: () => {}): void { this._onTouched = fn; }
+    public registerOnTouched(fn: () => {}): void { this._onTouched = fn; }
 
     /**
      * This event gets called when something outside this class tries to set the value, such as at the template level.
      */
-    writeValue(model: any): void {
+    public writeValue = (model: any): void => {
         if (model !== this._model) {
             this._model = model;
             this._inputValue = '';
@@ -378,8 +370,8 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
                 let selectedNode = this._itemSource.findNode(this._filteredItems.root, (item => item.id !== undefined && item.id === model.id));
                 if (selectedNode)
                     selectedNode.focus();
-                this.selectedItem = selectedNode;
-                if (this.selectedItem) { this._inputValue = this.selectedItem.name; }
+                this._selectedItem = selectedNode;
+                if (this._selectedItem) { this._inputValue = this._selectedItem.name; }
             }
             if (!this._inputValue) { this._inputValue = ''; }
         }
