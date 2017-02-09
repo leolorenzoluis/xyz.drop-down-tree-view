@@ -1,5 +1,5 @@
 <ul>
-	<li (click)="selectOption(itemsource)">
+	<li>
 		<div *ngIf="itemsource?.options?.showRoot">{{itemsource.name}}</div>
 		<ul *ngFor="let child of itemsource.children">
 				<node [item]="child" [query-value]="queryValue"></node>
