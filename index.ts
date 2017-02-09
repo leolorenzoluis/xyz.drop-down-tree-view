@@ -7,3 +7,4 @@ export * from './src/components/tree.component';
 export * from './src/components/tree-node.component';
 export * from './src/components/dropdown-treeview.component';
 export * from './src/shared/keycode';
+export * from './src/xyz.module';
