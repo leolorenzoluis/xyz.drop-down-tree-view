@@ -1,31 +1,25 @@
 import { Component, Input } from '@angular/core';
-import { TreeViewService } from '../services/treeview.service';
+import { TreeViewService, TreeNode } from '../../index';
 
 @Component({
 	selector: 'node',
 	templateUrl: 'tree-node.component.html'
 })
 export class TreeNodeComponent {
-	_queryValue: string;
-	@Input()
-	set queryValue(name: string) {
-		this._queryValue = name;
-	}
 
-	onMouseOver(): void {
-		if (this.item.selectable) {
-			this.service.changeFocus(this.item);
-		}
-	}
+	@Input('query-value') queryValue: string;
+	@Input() item: TreeNode;
 
-	selectOption(event: Event, item: any) {
-		if (this.item.selectable) {
-			this.service.changeSelectedItem(item);
-			event.stopPropagation();
-		}
-	}
 	constructor(private service: TreeViewService) {
+
 	}
-	@Input() item: any;
-	IsExpanded: boolean = false;
+
+	private onMouseOver = (): void => {
+		this.service.changeFocus(this.item);
+	}
+
+	private onClick = (event: Event, item: any): void => {
+		this.service.changeSelectedItem(item);
+		event.stopPropagation();
+	}
 }

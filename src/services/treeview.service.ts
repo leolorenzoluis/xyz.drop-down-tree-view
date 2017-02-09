@@ -1,22 +1,24 @@
 import { Injectable } from '@angular/core';
-
+import { TreeNode } from '../../index';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class TreeViewService {
     // Observable string sources
-    private selectedItemSource = new Subject<any>();
-    private currentFocus = new Subject<any>();
+    private _selectedItemSource = new Subject<TreeNode>();
+    private _currentFocus = new Subject<TreeNode>();
     // Observable string streams
-    observableSelectedItem = this.selectedItemSource.asObservable();
-    observableCurrentFocus = this.currentFocus.asObservable();
+    public observableSelectedItem = this._selectedItemSource.asObservable();
+    public observableCurrentFocus = this._currentFocus.asObservable();
 
     // Service message commands
-    changeSelectedItem(item) {
-        this.selectedItemSource.next(item);
+    public changeSelectedItem = (item: TreeNode) => {
+        if(item.selectable)
+            this._selectedItemSource.next(item);
     }
 
-    changeFocus(item) {
-        this.currentFocus.next(item);
+    public changeFocus = (item: TreeNode) => {
+        if(item.selectable)
+            this._currentFocus.next(item);
     }
 }

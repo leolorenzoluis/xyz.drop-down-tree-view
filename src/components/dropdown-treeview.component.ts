@@ -57,7 +57,7 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
 
     constructor(private _element: ElementRef, private service: TreeViewService) {
         this._selectedItemSubscription = service.observableSelectedItem.subscribe(this.changeSelectedItem);
-        this._currentHighlightSubscription = service.observableCurrentFocus.subscribe(this.changeFocusedNode);
+        this._currentHighlightSubscription = service.observableCurrentFocus.subscribe(this.changeFocusedNodeOnMouseOver);
     }
 
     private _selectedItemSubscription: Subscription;
@@ -79,8 +79,8 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
     private _onTouched = (): void => { };
     public ngAfterContentInit = (): void => { this._isInitialized = true; }
 
-    @Output() change: EventEmitter<any> = new EventEmitter<any>();
-    @Output() textChange = new EventEmitter();
+    @Output() change: EventEmitter<DropDownWithTreeViewAutoCompleteChange> = new EventEmitter<DropDownWithTreeViewAutoCompleteChange>();
+    @Output() textChange: EventEmitter<string> = new EventEmitter<string>();
     @Input() id: string = 'dropdown-treeview' + (++nextId);
     @Input() tabindex: number = 0;
     @Input() placeholder: string = '';
@@ -129,18 +129,6 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
     public ngOnDestroy(): void {
         this._selectedItemSubscription.unsubscribe();
         this._currentHighlightSubscription.unsubscribe();
-    }
-
-    /**
-     * Change the focus node
-     */
-    private changeFocusedNode = (item: TreeNode): void => {
-        if (this._filteredItems.getFocusedNode()) {
-            this._filteredItems.getFocusedNode().unfocus();
-        }
-        if (item) {
-            this._filteredItems.setFocusedNode(item.focus());
-        }
     }
 
     /**
@@ -248,12 +236,12 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
             case DOWN_ARROW:
                 event.preventDefault();
                 event.stopPropagation();
-                this.changeFocus(DOWN_ARROW);
+                this.changeFocusOnKeyDown(DOWN_ARROW);
                 break;
             case UP_ARROW:
                 event.preventDefault();
                 event.stopPropagation();
-                this.changeFocus(UP_ARROW);
+                this.changeFocusOnKeyDown(UP_ARROW);
                 break;
             default:
                 setTimeout(() => {
@@ -262,7 +250,22 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
         }
     }
 
-    private changeFocus = (keyArrow: number): void => {
+    /**
+     * Change the focus node based on mouse over
+     */
+    private changeFocusedNodeOnMouseOver = (item: TreeNode): void => {
+        if (this._filteredItems.getFocusedNode()) {
+            this._filteredItems.getFocusedNode().unfocus();
+        }
+        if (item) {
+            this._filteredItems.setFocusedNode(item.focus());
+        }
+    }
+
+    /**
+     * Change the focus node based on key press
+     */
+    private changeFocusOnKeyDown = (keyArrow: number): void => {
         if (this.isMenuVisible) {
             if (keyArrow === UP_ARROW) {
                 this._filteredItems.focusPreviousNode();

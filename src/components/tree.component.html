@@ -2,7 +2,7 @@
 	<li (click)="selectOption(itemsource)">
 		<div *ngIf="itemsource?.options?.showRoot">{{itemsource.name}}</div>
 		<ul *ngFor="let child of itemsource.children">
-				<node [item]="child" [queryValue]="_queryValue"></node>
+				<node [item]="child" [query-value]="queryValue"></node>
 		</ul>
 		<div class="xyz-option" *ngIf="itemsource?.children.length <= 0">
 			No results found

@@ -1,24 +1,18 @@
 import { Component, Input } from '@angular/core';
 
-import { TreeViewService } from '../services/treeview.service';
+import { TreeViewService, Tree } from '../../index';
 
 @Component({
 	selector: 'tree',
 	templateUrl: 'tree.component.html'
 })
 export class TreeComponent {
-	_queryValue : string;
-	@Input() itemsource: any;
-	@Input()
-	set queryValue(name: string) {
-		this._queryValue = name;
-	}
+	@Input('item-source') itemsource: Tree;
+	@Input('query-value') queryValue: string;
 
 	selectOption(item: any) {
-		if (item.selectable) {
-			this.service.changeSelectedItem(item);
-			event.stopPropagation();
-		}
+		this.service.changeSelectedItem(item);
+		event.stopPropagation();
 	}
 
 	constructor(private service: TreeViewService) {
