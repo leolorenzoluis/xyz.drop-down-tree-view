@@ -1,0 +1,11 @@
+<ul>
+	<li (click)="selectOption(itemsource)">
+		<div *ngIf="itemsource?.options?.showRoot">{{itemsource.name}}</div>
+		<ul *ngFor="let child of itemsource.children">
+				<node [item]="child" [queryValue]="_queryValue"></node>
+		</ul>
+		<div class="md2-option" *ngIf="itemsource?.children.length <= 0">
+			No results found
+		</div>
+	</li>
+</ul>

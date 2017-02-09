@@ -1,0 +1,11 @@
+<li style="list-style-type: none;" (click)="selectOption($event, item)">
+    <div [class.tree-node-selected]="item.isHighlighted" [class.tree-node-selectable]="item.selectable" [class.tree-node-not-selectable]="!item.selectable"
+        [innerHtml]="item | highlight: _queryValue" class="md2-option" (mouseover)="onMouseOver()"></div>
+        <div *ngIf="item.isExpanded">
+            <ul *ngIf="item.children">
+                <div *ngFor="let child of item.children">
+                    <node [item]="child" [queryValue]="_queryValue"></node>
+                </div>
+            </ul>
+        </div>
+</li>
