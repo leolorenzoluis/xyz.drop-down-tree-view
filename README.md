@@ -1,4 +1,4 @@
-# XYZ Angular Dropdown TreeView [![npm version](https://img.shields.io/npm/v/ng2-dropdown-treeview.svg)](https://www.npmjs.com/package/@abc.xyz/drop-down-treeview)
+# XYZ Angular Dropdown TreeView [![npm](https://img.shields.io/badge/awesome-∞-brightgreen.svg)](https://www.npmjs.com/package/@abc.xyz/drop-down-treeview)
 
 An awesome and beautiful Angular 2 dropdown treeview component.
 
