@@ -9,6 +9,15 @@ You can customize CSS yourself to break down dependencies.
 * Unlimited tree levels
 * Smart text filtering
 
+## Demo
+
+Run the sample application
+```shell
+cd dropdown-treeview 
+npm install
+npm run start
+```
+
 ## Installation
 
 After install the above dependencies, install `ng2-dropdown-treeview` via:
