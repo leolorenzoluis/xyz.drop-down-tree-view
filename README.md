@@ -1,5 +1,7 @@
 # XYZ Angular Dropdown TreeView [![npm](https://img.shields.io/badge/awesome-∞-brightgreen.svg)](https://www.npmjs.com/package/@abc.xyz/drop-down-treeview)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/leolorenzoluis/xyz.drop-down-treeview.svg)](https://greenkeeper.io/)
+
 An awesome and beautiful Angular 2 dropdown treeview component.
 
 You can customize CSS yourself to break down dependencies.
