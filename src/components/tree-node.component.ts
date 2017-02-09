@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TreeViewService, TreeNode } from '../../index';
+import { TreeViewSelectedItemService, TreeViewFocusedItemService, TreeNode } from '../../index';
 
 @Component({
 	selector: 'node',
@@ -10,16 +10,15 @@ export class TreeNodeComponent {
 	@Input('query-value') queryValue: string;
 	@Input() item: TreeNode;
 
-	constructor(private service: TreeViewService) {
+	constructor(private treeViewSelectedItemService: TreeViewSelectedItemService, private treeViewFocusedItemService : TreeViewFocusedItemService) {
 
 	}
 
 	private onMouseOver = (): void => {
-		this.service.changeFocus(this.item);
+		this.treeViewFocusedItemService.changeFocus(this.item);
 	}
 
-	private onClick = (event: Event, item: any): void => {
-		this.service.changeSelectedItem(item);
-		event.stopPropagation();
+	private onClick = (): void => {
+		this.treeViewSelectedItemService.changeSelectedItem(this.item);
 	}
 }

@@ -3,15 +3,19 @@ import {
     ElementRef,
     EventEmitter,
     AfterContentInit,
+    AfterViewInit,
     forwardRef,
     ViewEncapsulation,
     Input,
     Output,
+    ViewChildren,
+    QueryList,
     OnDestroy
 } from '@angular/core';
 
 import {
-    Tree, TreeNode, TreeOptions, TreeViewService,
+    Tree, TreeNode, TreeOptions, TreeViewSelectedItemService,
+    TreeComponent,
     UP_ARROW,
     DOWN_ARROW,
     ENTER,
@@ -42,7 +46,7 @@ export class DropDownWithTreeViewAutoCompleteChange {
     selector: 'dropdown-treeview',
     templateUrl: './dropdown-treeview.html',
     styleUrls: ['dropdown-treeview.scss'],
-    providers: [TREEVIEW_DROPDOWN_AUTOCOMPLETE_CONTROL_VALUE_ACCESSOR, TreeViewService],
+    providers: [TREEVIEW_DROPDOWN_AUTOCOMPLETE_CONTROL_VALUE_ACCESSOR],
     host: {
         'role': 'autocomplete',
         '[id]': 'id',
@@ -53,15 +57,16 @@ export class DropDownWithTreeViewAutoCompleteChange {
     },
     encapsulation: ViewEncapsulation.None
 })
-export class DropDownWithTreeView implements AfterContentInit, ControlValueAccessor, OnDestroy {
+export class DropDownWithTreeView implements AfterContentInit, AfterViewInit, ControlValueAccessor, OnDestroy {
 
-    constructor(private _element: ElementRef, private service: TreeViewService) {
-        this._selectedItemSubscription = service.observableSelectedItem.subscribe(this.changeSelectedItem);
-        this._currentHighlightSubscription = service.observableCurrentFocus.subscribe(this.changeFocusedNodeOnMouseOver);
+    // Apparently have to use ViewChildren if using ngIf http://stackoverflow.com/questions/34947154/angular-2-viewchild-annotation-returns-undefined
+    @ViewChildren(TreeComponent) tree: QueryList<TreeComponent>;
+
+    constructor(private _element: ElementRef) {
+
     }
 
     private _selectedItemSubscription: Subscription;
-    private _currentHighlightSubscription: Subscription;
     private _model: any;
     private _readonly: boolean = false;
     private _required: boolean = false;
@@ -77,7 +82,16 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
 
     private _onChange = (val: any): void => { };
     private _onTouched = (): void => { };
-    public ngAfterContentInit = (): void => { this._isInitialized = true; }
+    public ngAfterContentInit(): void { this._isInitialized = true; }
+
+    public ngAfterViewInit(): void {
+        this.tree.changes.subscribe((comps: QueryList<TreeComponent>) => {
+            let treeComponent = comps.first;
+            if (treeComponent) {
+                this._selectedItemSubscription = treeComponent.treeViewSelectedItemService.observableSelectedItem.subscribe(this.changeSelectedItem);
+            }
+        });
+    }
 
     @Output() change: EventEmitter<DropDownWithTreeViewAutoCompleteChange> = new EventEmitter<DropDownWithTreeViewAutoCompleteChange>();
     @Output() textChange: EventEmitter<string> = new EventEmitter<string>();
@@ -128,7 +142,6 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
 
     public ngOnDestroy(): void {
         this._selectedItemSubscription.unsubscribe();
-        this._currentHighlightSubscription.unsubscribe();
     }
 
     /**
@@ -247,18 +260,6 @@ export class DropDownWithTreeView implements AfterContentInit, ControlValueAcces
                 setTimeout(() => {
                     this.updateFilteredItems(this._itemSource);
                 }, 10);
-        }
-    }
-
-    /**
-     * Change the focus node based on mouse over
-     */
-    private changeFocusedNodeOnMouseOver = (item: TreeNode): void => {
-        if (this._filteredItems.getFocusedNode()) {
-            this._filteredItems.getFocusedNode().unfocus();
-        }
-        if (item) {
-            this._filteredItems.setFocusedNode(item.focus());
         }
     }
 
