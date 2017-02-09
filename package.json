@@ -1,6 +1,6 @@
 {
   "name": "@abc.xyz/drop-down-treeview",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An awesome angular dropdown with treeview",
   "main": "index.js",
   "scripts": {
