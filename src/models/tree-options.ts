@@ -1,7 +1,7 @@
-import * as Fuse from '../shared/fuse.js';
+import { Fuse } from "../shared/fuse.js";
 
 export class TreeOptions {
-    showRoot: boolean = false;
+    showRoot = false;
 
     searchOptions = {
         shouldSort: true,
