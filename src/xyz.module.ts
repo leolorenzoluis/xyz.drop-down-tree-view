@@ -21,6 +21,7 @@ import { DropDownWithTreeView, HighlightPipe, TreeComponent, TreeNodeComponent }
         DropDownWithTreeView
     ]
 })
+
 export class XyzModule { 
     static forRoot(): ModuleWithProviders {
         return {

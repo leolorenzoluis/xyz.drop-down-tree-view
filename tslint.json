@@ -8,7 +8,7 @@
             true,
             "check-space"
         ],
-        "curly": true,
+        "curly": false,
         "eofline": true,
         "forin": true,
         "indent": [
@@ -88,9 +88,18 @@
             "check-separator",
             "check-type"
         ],
-
-        "directive-selector": [true, "attribute", "leo", "camelCase"],
-        "component-selector": [true, "element", "leo", "kebab-case"],
+        "directive-selector": [
+            true,
+            "attribute",
+            "leo",
+            "camelCase"
+        ],
+        "component-selector": [
+            true,
+            "element",
+            "leo",
+            "kebab-case"
+        ],
         "use-input-property-decorator": true,
         "use-output-property-decorator": true,
         "use-host-property-decorator": true,

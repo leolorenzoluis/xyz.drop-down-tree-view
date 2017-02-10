@@ -19,18 +19,18 @@
       "node_modules/@types"
     ],
     "types": [
-      "hammerjs",
-      "jasmine",
-      "node",
-      "source-map",
-      "uglify-js",
-      "webpack"
+      
     ]
   },
   "exclude": [
+    "dropdown-treeview",
     "node_modules",
     "dist"
   ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true
+  },
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,
     "useWebpackText": true
