@@ -1,4 +1,4 @@
-# XYZ Angular Dropdown TreeView [![npm](https://img.shields.io/badge/awesome-∞-brightgreen.svg)](https://www.npmjs.com/package/@abc.xyz/drop-down-treeview)
+# XYZ Angular Dropdown TreeView [![npm](https://img.shields.io/badge/awesome-∞-brightgreen.svg)](https://www.npmjs.com/package/@abc.xyz/drop-down-treeview) [![Build Status](https://travis-ci.org/leolorenzoluis/xyz.drop-down-treeview.svg?branch=master)](https://travis-ci.org/leolorenzoluis/xyz.drop-down-treeview)
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/leolorenzoluis/xyz.drop-down-treeview.svg)](https://greenkeeper.io/)
 
