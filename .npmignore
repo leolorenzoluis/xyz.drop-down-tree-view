@@ -15,9 +15,4 @@ webpack.config.js
 tsconfig.json
 tsconfig-ngc.json
 tslint.json
-*.scss
-*.css
-*.ts
-!*.d.ts
-!*.metadata.json
 .vscode/*

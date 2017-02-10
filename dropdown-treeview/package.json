@@ -12,7 +12,7 @@
   },
   "private": true,
   "dependencies": {
-    "@abc.xyz/drop-down-treeview": "0.0.6",
+    "@abc.xyz/drop-down-treeview": "0.0.8",
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",
     "@angular/core": "^2.3.1",
