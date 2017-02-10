@@ -2,7 +2,9 @@
   "name": "@abc.xyz/drop-down-treeview",
   "version": "0.0.6",
   "description": "An awesome angular dropdown with treeview",
-  "main": "index.js",
+  "main": "bundles/xyz-dropdown-treeview.umd.js",
+  "module": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "test": "mocha --reporter spec",
     "ngc": "ngc -p tsconfig.json",
