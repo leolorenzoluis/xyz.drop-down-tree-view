@@ -8,13 +8,16 @@ Thumbs.db
 .DS_Store
 
 # Ignored files
-bundles
-dropdown-treeview/*
-src/*.d.ts
-src/*.js
-index.d.ts
-index.js
+dropdown-treeview
+config
+typings
+webpack.config.js
+tsconfig.json
+tsconfig-ngc.json
+tslint.json
+*.scss
 *.css
-*.map
-*.metadata.json
+*.ts
+!*.d.ts
+!*.metadata.json
 .vscode/*
