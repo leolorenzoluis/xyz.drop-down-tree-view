@@ -32,7 +32,7 @@ npm run start
 
 ## Installation
 
-After install the above dependencies, install `ng2-dropdown-treeview` via:
+After install the above dependencies, install `@abc.xyz/drop-down-treeview` via npm:
 ```shell
 npm i @abc.xyz/drop-down-treeview --save
 ```
