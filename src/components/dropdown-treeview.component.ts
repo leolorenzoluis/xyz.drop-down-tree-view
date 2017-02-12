@@ -14,14 +14,18 @@ import {
 } from '@angular/core';
 
 import {
-    Tree, TreeNode, TreeOptions,
-    TreeComponent,
     UP_ARROW,
     DOWN_ARROW,
     ENTER,
     ESCAPE,
     TAB
-} from '../../index';
+} from '../shared/keycode';
+
+import {
+    Tree, TreeNode, TreeOptions,
+} from '../models';
+
+import { TreeComponent } from './tree.component';
 
 import { Subscription } from 'rxjs/Subscription';
 import {
@@ -33,12 +37,12 @@ let nextId = 0;
 
 export const TREEVIEW_DROPDOWN_AUTOCOMPLETE_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => DropDownWithTreeView),
+    useExisting: forwardRef(() => DropDownWithTreeViewComponent),
     multi: true
 };
 
 export class DropDownWithTreeViewAutoCompleteChange {
-    source: DropDownWithTreeView;
+    source: DropDownWithTreeViewComponent;
     value: any;
 }
 
@@ -57,7 +61,7 @@ export class DropDownWithTreeViewAutoCompleteChange {
     },
     encapsulation: ViewEncapsulation.None
 })
-export class DropDownWithTreeView implements AfterContentInit, AfterViewInit, ControlValueAccessor, OnDestroy {
+export class DropDownWithTreeViewComponent implements AfterContentInit, AfterViewInit, ControlValueAccessor, OnDestroy {
 
     // Apparently have to use ViewChildren if using ngIf http://stackoverflow.com/questions/34947154/angular-2-viewchild-annotation-returns-undefined
     @ViewChildren(TreeComponent) tree: QueryList<TreeComponent>;

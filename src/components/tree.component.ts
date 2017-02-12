@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy } from '@angular/core';
-
-import { TreeViewFocusedItemService, TreeViewSelectedItemService, Tree, TreeNode } from '../../index';
+import { Tree, TreeNode } from '../models';
+import { TreeViewFocusedItemService, TreeViewSelectedItemService } from '../services';
 
 import { Subscription } from 'rxjs/Subscription';
 @Component({

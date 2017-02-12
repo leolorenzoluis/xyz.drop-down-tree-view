@@ -18,6 +18,12 @@ function ngExternal(ns) {
     return { root: ['ng', ns], commonjs: ng2Ns, commonjs2: ng2Ns, amd: ng2Ns };
 }
 
+console.log('=========' + process.env.NODE_ENV);
+var outputDirectory = 'bundles';
+if(process.env.NODE_ENV === 'demo') {
+    outputDirectory = 'dropdown-treeview/node_modules/@abc.xyz/drop-down-treeview/bundles';
+}
+
 module.exports = {
     devtool: 'source-map',
 
@@ -28,7 +34,7 @@ module.exports = {
     entry: helpers.root('./index.ts'),
 
     output: {
-        path: helpers.root('bundles'),
+        path: helpers.root(outputDirectory),
         publicPath: '/',
         filename: 'xyz-dropdown-treeview.umd.js',
         libraryTarget: 'umd',

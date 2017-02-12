@@ -9,7 +9,9 @@
     "test": "mocha --reporter spec",
     "ngc": "ngc -p tsconfig.json",
     "build": "webpack --config config/webpack.config.js",
-    "lint": "tslint \"src/**/*.ts\" -e \"src/**/*.d.ts\""
+    "build-for-demo": "NODE_ENV=demo webpack --config config/webpack.config.js",
+    "lint": "tslint \"src/**/*.ts\" -e \"src/**/*.d.ts\"",
+    "iscyclic": "iscyclic stats.json"
   },
   "repository": {
     "type": "git",
@@ -79,6 +81,7 @@
     "typescript": "^2.1.6",
     "url-loader": "0.5.7",
     "webpack": "2.2.0",
+    "webpack-cyclic-dependency-checker": "0.0.1",
     "webpack-dev-server": "2.2.0",
     "webpack-merge": "2.4.0",
     "zone.js": "^0.7.6"

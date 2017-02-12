@@ -1,7 +1,10 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { DropDownWithTreeView, HighlightPipe, TreeComponent, TreeNodeComponent } from '../index';
+import { TreeComponent } from './components/tree.component';
+import { DropDownWithTreeViewComponent } from './components/dropdown-treeview.component';
+import { TreeNodeComponent } from './components/tree-node.component';
+import { HighlightPipe } from './shared/highlight-pipe';
 
 @NgModule({
     imports: [
@@ -10,15 +13,15 @@ import { DropDownWithTreeView, HighlightPipe, TreeComponent, TreeNodeComponent }
     ],
 
     declarations: [
+        HighlightPipe,
         TreeComponent,
         TreeNodeComponent,
-        DropDownWithTreeView,
-        HighlightPipe
+        DropDownWithTreeViewComponent
     ],
 
     exports: [
         TreeComponent,
-        DropDownWithTreeView
+        DropDownWithTreeViewComponent
     ]
 })
 

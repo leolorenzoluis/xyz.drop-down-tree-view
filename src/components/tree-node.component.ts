@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { TreeViewSelectedItemService, TreeViewFocusedItemService, TreeNode } from '../../index';
+import { Tree, TreeNode } from '../models';
+import { TreeViewFocusedItemService, TreeViewSelectedItemService } from '../services';
 
 @Component({
 	selector: 'node',
