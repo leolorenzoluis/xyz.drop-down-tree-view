@@ -17,7 +17,7 @@ You can customize CSS yourself to break down dependencies.
 ## Demo
 
 ### Plunker
-https://plnkr.co/edit/63jvcJd3K3sz1v9rdxyN?p=options
+https://plnkr.co/edit/63jvcJd3K3sz1v9rdxyN?p=preview
 
 ### Local
 Run the sample application
