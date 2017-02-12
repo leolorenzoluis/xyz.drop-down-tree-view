@@ -19,6 +19,10 @@ You can customize CSS yourself to break down dependencies.
 
 ## Demo
 
+### Plunker
+https://plnkr.co/edit/63jvcJd3K3sz1v9rdxyN?p=options
+
+### Local
 Run the sample application
 ```shell
 cd dropdown-treeview 
