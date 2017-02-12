@@ -14,7 +14,7 @@ import {
 } from '@angular/core';
 
 import {
-    Tree, TreeNode, TreeOptions, TreeViewSelectedItemService,
+    Tree, TreeNode, TreeOptions,
     TreeComponent,
     UP_ARROW,
     DOWN_ARROW,
@@ -44,7 +44,7 @@ export class DropDownWithTreeViewAutoCompleteChange {
 
 @Component({
     selector: 'dropdown-treeview',
-    templateUrl: './dropdown-treeview.html',
+    templateUrl: './dropdown-treeview.component.html',
     styleUrls: ['dropdown-treeview.scss'],
     providers: [TREEVIEW_DROPDOWN_AUTOCOMPLETE_CONTROL_VALUE_ACCESSOR],
     host: {

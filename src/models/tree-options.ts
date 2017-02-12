@@ -1,4 +1,4 @@
-import { Fuse } from "../shared/fuse.js";
+import * as Fuse from 'fuse.js';
 
 export class TreeOptions {
     showRoot = false;
