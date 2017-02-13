@@ -52,13 +52,12 @@ export class AppModule {
 
 Here is the example template:
 ```html
-<dropdown-treeview [itemSource]="items"
+<dropdown-treeview [item-source]="items"
                   item-text="name"
                   min-length="0"
                   [(ngModel)]="item"
                   (change)="handleChange($event)"
-                  placeholder="Placeholder Text"
-                  ngDefaultControl>
+                  placeholder="Placeholder Text">
 </dropdown-treeview>
 ```
 
