@@ -1,7 +1,14 @@
 # XYZ Angular Dropdown TreeView 
 
+<<<<<<< HEAD
 [![npm](https://img.shields.io/badge/awesome-∞-brightgreen.svg)](https://www.npmjs.com/package/@abc.xyz/drop-down-treeview) [![Build Status](https://travis-ci.org/leolorenzoluis/xyz.drop-down-treeview.svg?branch=master)](https://travis-ci.org/leolorenzoluis/xyz.drop-down-treeview)
 [![Greenkeeper badge](https://badges.greenkeeper.io/leolorenzoluis/xyz.drop-down-treeview.svg)](https://greenkeeper.io/)
+=======
+[![Greenkeeper badge](https://badges.greenkeeper.io/leolorenzoluis/xyz.drop-down-tree-view.svg)](https://greenkeeper.io/)
+
+[![npm](https://img.shields.io/badge/awesome-∞-brightgreen.svg)](https://www.npmjs.com/package/@abc.xyz/drop-down-treeview) [![Build Status](https://travis-ci.org/leolorenzoluis/xyz.drop-down-treeview.svg?branch=master)](https://travis-ci.org/leolorenzoluis/xyz.drop-down-treeview)[![Dependency Status](https://www.versioneye.com/user/projects/589d5b886a7781003b24301e/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/589d5b886a7781003b24301e)
+
+>>>>>>> origin/master
 
 An awesome and beautiful Angular 2 dropdown treeview component.
 
@@ -16,6 +23,10 @@ You can customize CSS yourself to break down dependencies.
 
 ## Demo
 
+### Plunker
+https://plnkr.co/edit/63jvcJd3K3sz1v9rdxyN?p=preview
+
+### Local
 Run the sample application
 ```shell
 cd dropdown-treeview 
@@ -25,7 +36,7 @@ npm run start
 
 ## Installation
 
-After install the above dependencies, install `ng2-dropdown-treeview` via:
+After install the above dependencies, install `@abc.xyz/drop-down-treeview` via npm:
 ```shell
 npm i @abc.xyz/drop-down-treeview --save
 ```
