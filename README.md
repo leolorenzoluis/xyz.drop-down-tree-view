@@ -1,5 +1,7 @@
 # XYZ Angular Dropdown TreeView 
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/leolorenzoluis/xyz.drop-down-tree-view.svg)](https://greenkeeper.io/)
+
 [![npm](https://img.shields.io/badge/awesome-∞-brightgreen.svg)](https://www.npmjs.com/package/@abc.xyz/drop-down-treeview) [![Build Status](https://travis-ci.org/leolorenzoluis/xyz.drop-down-treeview.svg?branch=master)](https://travis-ci.org/leolorenzoluis/xyz.drop-down-treeview)[![Dependency Status](https://www.versioneye.com/user/projects/589d5b886a7781003b24301e/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/589d5b886a7781003b24301e)
 
 
