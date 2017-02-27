@@ -71,7 +71,7 @@
     "raw-loader": "^0.5.1",
     "rxjs": "^5.1.0",
     "sass-loader": "6.0.2",
-    "style-loader": "0.13.1",
+    "style-loader": "0.13.2",
     "to-string-loader": "^1.1.5",
     "tslib": "^1.5.0",
     "tslint": "^4.4.2",
