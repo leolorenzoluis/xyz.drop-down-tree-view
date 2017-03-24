@@ -30,7 +30,7 @@
   "peerDependencies": {
     "@angular/common": "^2.0.0",
     "@angular/core": "^2.0.0",
-    "@angular/forms": "^2.0.0",
+    "@angular/forms": "^4.0.0",
     "lodash": "^4.0.0"
   },
   "engines": {
