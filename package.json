@@ -39,7 +39,7 @@
   "devDependencies": {
     "@angular/cli": "^1.0.0-rc.2",
     "@angular/common": "~2.4.6",
-    "@angular/compiler": "~2.4.7",
+    "@angular/compiler": "~4.0.0",
     "@angular/core": "~2.4.6",
     "@angular/forms": "~2.4.6",
     "@types/node": "^7.0.5",
