@@ -75,7 +75,7 @@
     "style-loader": "0.16.0",
     "to-string-loader": "^1.1.5",
     "tslib": "^1.5.0",
-    "tslint": "^4.4.2",
+    "tslint": "^5.0.0",
     "tslint-loader": "^3.4.3",
     "typescript": "^2.1.6",
     "url-loader": "^0.5.8",
