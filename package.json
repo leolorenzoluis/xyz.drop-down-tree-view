@@ -81,7 +81,7 @@
     "typescript": "^2.1.6",
     "url-loader": "^0.5.8",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.2",
+    "webpack-dev-server": "^2.4.5",
     "webpack-merge": "^4.0.0",
     "zone.js": "^0.8.4"
   },
