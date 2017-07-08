@@ -86,7 +86,7 @@
     "zone.js": "^0.8.4"
   },
   "dependencies": {
-    "@angular/common": "^4.0.2",
+    "@angular/common": "^4.2.6",
     "@angular/compiler": "^4.2.4",
     "@angular/core": "^4.1.0",
     "@angular/forms": "^4.0.2",
