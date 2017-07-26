@@ -90,7 +90,7 @@
     "@angular/compiler": "^4.2.6",
     "@angular/core": "^4.3.1",
     "@angular/forms": "^4.3.1",
-    "@types/node": "^7.0.8",
+    "@types/node": "^8.0.17",
     "awesome-typescript-loader": "^3.1.2",
     "fuse.js": "^2.6.2",
     "html-loader": "^0.4.5",
