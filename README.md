@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/badge/awesome-∞-brightgreen.svg)](https://www.npmjs.com/package/@abc.xyz/drop-down-treeview) [![Build Status](https://travis-ci.org/leolorenzoluis/xyz.drop-down-tree-view.svg?branch=master)](https://travis-ci.org/leolorenzoluis/xyz.drop-down-tree-view)
 [![Dependency Status](https://www.versioneye.com/user/projects/589d5b886a7781003b24301e/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/589d5b886a7781003b24301e)
 
-An awesome and beautiful Angular 2 dropdown treeview component.
+An awesome and beautiful Angular 2 and Angular 4 dropdown treeview component.
 
 You can customize CSS yourself to break down dependencies.
 
