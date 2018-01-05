@@ -94,7 +94,7 @@
     "@types/node": "^8.0.17",
     "awesome-typescript-loader": "^3.2.2",
     "codelyzer": "^4.0.2",
-    "css-loader": "^0.28.4",
+    "css-loader": "^0.28.8",
     "fuse.js": "^3.0.5",
     "html-loader": "^0.5.0",
     "html-webpack-plugin": "^2.30.1",
