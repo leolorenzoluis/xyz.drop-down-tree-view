@@ -108,7 +108,7 @@
     "tslint-loader": "^3.5.3",
     "typescript": "^2.4.2",
     "url-loader": "^0.6.1",
-    "webpack-dev-server": "^2.6.1",
+    "webpack-dev-server": "^3.1.1",
     "zone.js": "^0.8.16"
   }
 }
