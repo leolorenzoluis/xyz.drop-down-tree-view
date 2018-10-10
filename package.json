@@ -91,7 +91,7 @@
     "@angular/compiler": "^4.3.3",
     "@angular/core": "^4.3.3",
     "@angular/forms": "^5.0.3",
-    "@types/node": "^10.3.2",
+    "@types/node": "^10.11.7",
     "awesome-typescript-loader": "^5.2.0",
     "codelyzer": "^4.0.2",
     "css-loader": "^1.0.0",
