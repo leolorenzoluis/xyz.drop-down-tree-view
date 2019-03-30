@@ -43,7 +43,7 @@
     "@angular/core": "^4.2.2",
     "@angular/forms": "^4.0.2",
     "@angular/platform-browser": "^5.2.1",
-    "@types/node": "^8.0.19",
+    "@types/node": "8.10.45",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.0.4-rc.0",
     "clean-webpack-plugin": "2.0.1",
