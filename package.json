@@ -92,7 +92,7 @@
     "@angular/core": "^4.3.3",
     "@angular/forms": "^5.0.3",
     "awesome-typescript-loader": "^5.2.1",
-    "@types/node": "^11.9.0",
+    "@types/node": "^11.12.1",
     "codelyzer": "^4.0.2",
     "css-loader": "^2.0.0",
     "fuse.js": "^3.0.5",
