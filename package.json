@@ -100,7 +100,7 @@
     "html-loader": "^0.5.4",
     "json-loader": "^0.5.7",
     "karma-webpack": "^4.0.0",
-    "karma": "^4.0.1",
+    "karma": "^4.3.0",
     "karma-webpack": "^4.0.0",
     "node-sass": "^4.5.3",
     "rxjs": "^5.4.2",
