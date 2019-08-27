@@ -82,7 +82,7 @@
     "url-loader": "^0.5.8",
     "webpack": "^4.0.0",
     "webpack-dev-server": "^2.4.2",
-    "webpack-merge": "^4.0.0",
+    "webpack-merge": "^4.2.2",
     "zone.js": "^0.8.4"
   },
   "dependencies": {
